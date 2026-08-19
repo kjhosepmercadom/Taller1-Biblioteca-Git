@@ -141,5 +141,36 @@ public class Main {
     }
     System.out.println("Book not found.");
 }
+    static void updateBook() {
+    System.out.println("=== Update Book ===");
+    System.out.print("Enter code of the book to update: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            System.out.print("New title (leave blank to keep current): ");
+            String title = sc.nextLine();
+            if (!title.isBlank()) {
+                b.setTitle(title);
+            }
+
+            System.out.print("New publication year (leave blank to keep current): ");
+            String year = sc.nextLine();
+            if (!year.isBlank()) {
+                b.setPublicationYear(year);
+            }
+
+            System.out.print("New author (leave blank to keep current): ");
+            String author = sc.nextLine();
+            if (!author.isBlank()) {
+                b.setAuthor(author);
+            }
+
+            System.out.println("Book updated successfully.");
+            return;
+        }
+    }
+    System.out.println("Book not found.");
+}
 }
  
