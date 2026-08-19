@@ -6,10 +6,12 @@ package com.mycompany.biblioteca;
  */
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Main {
     static ArrayList<Client> clients = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -185,6 +187,50 @@ public class Main {
         }
     }
     System.out.println("Book not found.");
+}
+    static void createLoan() {
+    System.out.println("=== Create Loan ===");
+
+    System.out.print("Loan ID: ");
+    String idLoan = sc.nextLine();
+
+    System.out.print("Client ID: ");
+    String clientId = sc.nextLine();
+    Client foundClient = null;
+    for (Client c : clients) {
+        if (c.getId().equals(clientId)) {
+            foundClient = c;
+            break;
+        }
+    }
+    if (foundClient == null) {
+        System.out.println("Client not found. Loan cancelled.");
+        return;
+    }
+
+    System.out.print("Book code: ");
+    String bookCode = sc.nextLine();
+    Book foundBook = null;
+    for (Book b : books) {
+        if (b.getCode().equals(bookCode)) {
+            foundBook = b;
+            break;
+        }
+    }
+    if (foundBook == null) {
+        System.out.println("Book not found. Loan cancelled.");
+        return;
+    }
+    if (!foundBook.isAvailable()) {
+        System.out.println("Book is not available. Loan cancelled.");
+        return;
+    }
+
+    Loan newLoan = new Loan(idLoan, foundClient, foundBook, LocalDate.now(), "ACTIVE");
+    loans.add(newLoan);
+    foundBook.setAvailable(false);
+
+    System.out.println("Loan registered successfully.");
 }
 }
  
