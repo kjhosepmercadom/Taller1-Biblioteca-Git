@@ -232,5 +232,20 @@ public class Main {
 
     System.out.println("Loan registered successfully.");
 }
+    static void returnLoan() {
+    System.out.println("=== Return Loan ===");
+    System.out.print("Enter Loan ID to return: ");
+    String idLoan = sc.nextLine();
+
+    for (Loan l : loans) {
+        if (l.getIdLoan().equals(idLoan) && l.getStatus().equals("ACTIVE")) {
+            l.setStatus("RETURNED");
+            l.getBook().setAvailable(true);
+            System.out.println("Loan returned successfully.");
+            return;
+        }
+    }
+    System.out.println("Active loan not found.");
+}
 }
  
