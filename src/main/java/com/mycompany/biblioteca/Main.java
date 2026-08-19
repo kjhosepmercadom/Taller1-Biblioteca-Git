@@ -55,6 +55,36 @@ public class Main {
         }
         System.out.println("Client not found.");
     }
-    
+    static void updateClient() {
+    System.out.println("=== Update Client ===");
+    System.out.print("Enter ID of the client to update: ");
+    String id = sc.nextLine();
+
+    for (Client c : clients) {
+        if (c.getId().equals(id)) {
+            System.out.print("New name (leave blank to keep current): ");
+            String name = sc.nextLine();
+            if (!name.isBlank()) {
+                c.setName(name);
+            }
+
+            System.out.print("New phone (leave blank to keep current): ");
+            String phone = sc.nextLine();
+            if (!phone.isBlank()) {
+                c.setPhone(phone);
+            }
+
+            System.out.print("New email (leave blank to keep current): ");
+            String email = sc.nextLine();
+            if (!email.isBlank()) {
+                c.setEmail(email);
+            }
+
+            System.out.println("Client updated successfully.");
+            return;
+        }
+    }
+    System.out.println("Client not found.");
+}
 }
  
