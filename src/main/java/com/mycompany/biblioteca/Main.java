@@ -172,5 +172,19 @@ public class Main {
     }
     System.out.println("Book not found.");
 }
+    static void deleteBook() {
+    System.out.println("=== Delete Book ===");
+    System.out.print("Enter code of the book to delete: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            books.remove(b);
+            System.out.println("Book deleted successfully.");
+            return;
+        }
+    }
+    System.out.println("Book not found.");
+}
 }
  
