@@ -40,5 +40,15 @@ public class Main {
             System.out.println(c);
         }
     }
+    static void listClients() {
+        System.out.println("=== Client List ===");
+        if (clients.isEmpty()) {
+            System.out.println("No clients registered.");
+            return;
+        }
+        for (Client c : clients) {
+            System.out.println(c);
+        }
+    }
 }
  
