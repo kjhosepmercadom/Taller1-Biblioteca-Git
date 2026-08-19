@@ -247,5 +247,20 @@ public class Main {
     }
     System.out.println("Active loan not found.");
 }
+    static void listActiveLoans() {
+    System.out.println("=== Active Loans ===");
+    boolean found = false;
+
+    for (Loan l : loans) {
+        if (l.getStatus().equals("ACTIVE")) {
+            System.out.println(l);
+            found = true;
+        }
+    }
+
+    if (!found) {
+        System.out.println("No active loans.");
+    }
+}
 }
  
