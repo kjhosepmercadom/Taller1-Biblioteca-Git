@@ -127,5 +127,19 @@ public class Main {
         System.out.println(b);
     }
 }
+    static void findBook() {
+    System.out.println("=== Find Book ===");
+    System.out.print("Enter code to search: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            System.out.println("Book found:");
+            System.out.println(b);
+            return;
+        }
+    }
+    System.out.println("Book not found.");
+}
 }
  
