@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Client> clients = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -99,6 +100,91 @@ public class Main {
         }
     }
     System.out.println("Client not found.");
+}
+    static void createBook() {
+    System.out.println("=== Create Book ===");
+    System.out.print("Code: ");
+    String code = sc.nextLine();
+    System.out.print("Title: ");
+    String title = sc.nextLine();
+    System.out.print("Publication Year: ");
+    String publicationYear = sc.nextLine();
+    System.out.print("Author: ");
+    String author = sc.nextLine();
+
+    Book newBook = new Book(code, title, publicationYear, author);
+    books.add(newBook);
+
+    System.out.println("Book created successfully.");
+}
+    static void listBooks() {
+    System.out.println("=== Book List ===");
+    if (books.isEmpty()) {
+        System.out.println("No books registered.");
+        return;
+    }
+    for (Book b : books) {
+        System.out.println(b);
+    }
+}
+    static void findBook() {
+    System.out.println("=== Find Book ===");
+    System.out.print("Enter code to search: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            System.out.println("Book found:");
+            System.out.println(b);
+            return;
+        }
+    }
+    System.out.println("Book not found.");
+}
+    static void updateBook() {
+    System.out.println("=== Update Book ===");
+    System.out.print("Enter code of the book to update: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            System.out.print("New title (leave blank to keep current): ");
+            String title = sc.nextLine();
+            if (!title.isBlank()) {
+                b.setTitle(title);
+            }
+
+            System.out.print("New publication year (leave blank to keep current): ");
+            String year = sc.nextLine();
+            if (!year.isBlank()) {
+                b.setPublicationYear(year);
+            }
+
+            System.out.print("New author (leave blank to keep current): ");
+            String author = sc.nextLine();
+            if (!author.isBlank()) {
+                b.setAuthor(author);
+            }
+
+            System.out.println("Book updated successfully.");
+            return;
+        }
+    }
+    System.out.println("Book not found.");
+}
+    static void deleteBook() {
+    System.out.println("=== Delete Book ===");
+    System.out.print("Enter code of the book to delete: ");
+    String code = sc.nextLine();
+
+    for (Book b : books) {
+        if (b.getCode().equals(code)) {
+            books.remove(b);
+            System.out.println("Book deleted successfully.");
+            return;
+        }
+    }
+    System.out.println("Book not found.");
 }
 }
  
