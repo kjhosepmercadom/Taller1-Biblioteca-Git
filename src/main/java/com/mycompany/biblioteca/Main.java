@@ -1,6 +1,5 @@
 
 package com.mycompany.biblioteca;
-
 /**
  *
  * @author KEVINDDD
@@ -15,6 +14,7 @@ public class Main {
     public static void main(String[] args) {
         // Menu will be added in Phase 8
     }
+
     static void createClient() {
         System.out.println("=== Create Client ===");
         System.out.print("ID: ");
@@ -25,11 +25,11 @@ public class Main {
         String phone = sc.nextLine();
         System.out.print("Email: ");
         String email = sc.nextLine();
-
         Client newClient = new Client(id, name, phone, email);
         clients.add(newClient);
         System.out.println("Client created successfully.");
     }
+
     static void listClients() {
         System.out.println("=== Client List ===");
         if (clients.isEmpty()) {
@@ -40,15 +40,21 @@ public class Main {
             System.out.println(c);
         }
     }
-    static void listClients() {
-        System.out.println("=== Client List ===");
-        if (clients.isEmpty()) {
-            System.out.println("No clients registered.");
-            return;
-        }
+
+    static void findClient() {
+        System.out.println("=== Find Client ===");
+        System.out.print("Enter ID to search: ");
+        String id = sc.nextLine();
+
         for (Client c : clients) {
-            System.out.println(c);
+            if (c.getId().equals(id)) {
+                System.out.println("Client found:");
+                System.out.println(c);
+                return;
+            }
         }
+        System.out.println("Client not found.");
     }
+    
 }
  
