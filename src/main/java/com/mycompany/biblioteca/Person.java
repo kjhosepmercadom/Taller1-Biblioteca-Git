@@ -7,26 +7,26 @@ package com.mycompany.biblioteca;
  */
 public class Person {
     protected String id;
-    protected String nombre;
-    protected String telefono;
+    protected String name;
+    protected String phone;
 
-    public Person(String id, String nombre, String telefono) {
+    public Person(String id, String name, String phone) {
         this.id = id;
-        this.nombre = nombre;
-        this.telefono = telefono;
+        this.name = name;
+        this.phone = phone;
     }
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     @Override
     public String toString() {
-        return "ID: " + id + " | Name: " + nombre + " | Phone: " + telefono;
+        return "ID: " + id + " | Name: " + name + " | Phone: " + phone;
     }
 }
